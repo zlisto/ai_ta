@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Build Your Own AI Teaching Assistant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      border-radius: 6px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .step {
+      background: #ffffff;
+      border-left: 4px solid #3498db;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    ol {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Build Your Own AI Teaching Assistant</h1>
+  <p><strong>Instructor:</strong> Tauhid Zaman, Associate Professor of Operations Management at Yale School of Management<br>
+       <strong>Topic:</strong> Hands-on demo to build an AI TA using ElevenLabs and React</p>
+
+  <h2>🔧 Pre-Requisites (Complete Before the Lecture)</h2>
+  <ul>
+    <li>Create an <a href="https://elevenlabs.io" target="_blank">ElevenLabs account</a></li>
+    <li>Create a <a href="https://chat.openai.com" target="_blank">ChatGPT account</a></li>
+    <li>Install <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code (VS Code)</a></li>
+  </ul>
+
+  <h2>📋 Instructions</h2>
+
+  <div class="step">
+    <h3>1. Get Audio File of Subject</h3>
+    <ol>
+      <li>Find a YouTube video of Professor Ed Kaplan speaking (preferably alone and with minimal background noise).</li>
+      <li>Go to <a href="https://tuberipper.com" target="_blank">Tuberipper.com</a>, paste the video URL, click <strong>Go</strong>, and select <strong>Extract Audio MP3</strong>.</li>
+      <li>Download the MP3 file.</li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <h3>2. Trim Audio Clips (10 seconds each)</h3>
+    <ol>
+      <li>Go to <a href="https://audiotrimmer.com/" target="_blank">audiotrimmer.com</a> and upload your MP3.</li>
+      <li>Use the slider to trim a 10-second clip. Click <strong>Crop</strong> and download it.</li>
+      <li>Click <strong>Go Back</strong> and repeat to get 2–3 clips.</li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <h3>3. Clone Voice in ElevenLabs</h3>
+    <ol>
+      <li>Log into <a href="https://elevenlabs.io" target="_blank">ElevenLabs</a> and click <strong>Go to App</strong>.</li>
+      <li>Click <strong>Voices</strong> on the left, then <strong>Create or Clone a Voice</strong>.</li>
+      <li>Choose <strong>Instant Voice Clone</strong> and upload your audio clips.</li>
+      <li>Name the voice, choose language, add a short description, and click <strong>Save Voice</strong>.</li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <h3>4. Create the Conversational Agent</h3>
+    <ol>
+      <li>From the ElevenLabs App, click <strong>Conversational AI</strong> > <strong>Agents</strong> > <strong>+ New Agent</strong>.</li>
+      <li>Select <strong>Blank Template</strong> and click <strong>Create Agent</strong>.</li>
+      <li>Fill in the Agent name, language, and first message.</li>
+      <li>For the system prompt, open ChatGPT and type:</li>
+      <pre><code>
+"Write a system prompt for an AI Teaching Assistant for [class] that acts like [describe person]. 
+The class is about [describe class]. Make sure the TA guides students through problems without giving full answers. 
+Use the RAG for homework solutions but do not give solutions directly. The TA should be [describe personality traits]."
+      </code></pre>
+      <li>Paste the generated system prompt into ElevenLabs under <strong>System Prompt</strong>.</li>
+      <li>Upload PDFs of homework assignments and solutions to the <strong>Knowledge Base</strong>. Check <strong>Use RAG</strong>.</li>
+        <li>Choose your large language model (the underlying AI) under <strong>LLM</strong>.</li>
+      <li>Under the <strong>Voice</strong> tab, choose the cloned voice.</li>
+      <li>Under the <strong>Advanced</strong> tab, set <strong>Max Conversation Duration</strong>.</li>
+      <li>Under <strong>Widget</strong>, upload an avatar image (optional).</li>
+      <li>Click <strong>Save</strong>, then click <strong>Test AI Agent</strong> to try it out!</li>
+    </ol>
+  </div>
+
+  <div class="step">
+    <h3>5. Create React Web App to Chat with AI TA</h3>
+    <ol><li>Go to ChatGPT and type:</li>
+      <pre><code>
+"App maker, app maker, make me an app. I want a React app. I have a folder called 'homeworks' with PDFs of homework assignments. 
+I want the app to let me choose one of the PDFs (side menu) and then it shows the PDF in the middle in a nice PDF viewer. 
+Then I have an ElevenLabs conversational agent widget. I will paste this widget code. 
+Show me where to paste it with a comment like // ElevenLabs widget code goes here. I will run this in VS Code. 
+Tell me how to do it step-by-step."
+      </code></pre>
+      <li>Follow the instructions provided by ChatGPT to build the app in VS Code.</li>
+      <li>Paste the widget code into the placeholder comment in the React component.</li>
+    </ol>
+  </div>
+
+  <hr />
+  <p><em>That's it! You've created your own AI Teaching Assistant using a cloned voice and course material. 
+  Test it, refine it, and deploy it to help guide students in the modern age of education.</em></p>
+</body>
+</html>
